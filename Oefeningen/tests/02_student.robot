@@ -20,3 +20,15 @@ Search For Internship
     ${text}=  Get Text  class:card-text
     [Return]  ${text}
     Should Contain  ${text}  front-end  ignore_case=True
+
+Lock Internship
+    Login To Website
+    Click Link  /companylist
+    Click Link   /newapplication/5
+    Click Element  css:input[value='Opslaan']
+    Click Link  /account
+    ${text}=  Get Text  class:table
+    [Return]  ${text}
+    Should Contain  ${text}  contacted  ignore_case=True
+
+
