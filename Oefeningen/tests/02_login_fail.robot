@@ -9,10 +9,8 @@ Suite Teardown  Close browser
 *** Test Cases ***
 
 Login
-    Open My Website
     Wait Until Element Is Visible  id:email
     Input Text  id:email  student@thomasmore.be
     Input Password  id:password  1234
     Click Element  css:input[value='Login']
     Location Should Be  https://stageplatform.herokuapp.com/login?error
-    Close Browser
