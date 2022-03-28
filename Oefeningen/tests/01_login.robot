@@ -11,16 +11,10 @@ Suite Teardown  Close browser
 *** Test Cases ***
 
 Login Success
-    Wait Until Element Is Visible  id:email
-    Input Text  id:email  student@thomasmore.be
-    Input Password  id:password  student
-    Click Element  css:input[value='Login']
+    Login To Website  student@thomasmore.be  student
     Element Should Be Visible  css:.user.mx-2
 
 Login Fail
-    Wait Until Element Is Visible  id:email
-    Input Text  id:email  student@thomasmore.be
-    Input Password  id:password  1234
-    Click Element  css:input[value='Login']
+    Login To Website  student@thomasmore.be  1234
     Location Should Be  https://stageplatform.herokuapp.com/login?error
 

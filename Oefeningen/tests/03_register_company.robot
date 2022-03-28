@@ -8,7 +8,8 @@ Suite Teardown  Close browser
 
 *** Variables ***
 
-${LOCATION}    //li[normalize-space()='Brussels']
+${LOCATION}  //li[normalize-space()='Brussels']
+${PASSWORD}  1234Passwoord$
 
 *** Test Cases ***
 
@@ -19,18 +20,25 @@ Register Company
     Input Text  id:street-nr  123
     Input Text  id:postalCode  1000
     Input Text  id:city  Brussels
-    wait until element is visible  ${LOCATION}
+    Wait Until Element Is Visible  ${LOCATION}
     Mouse Down  ${LOCATION}
     click element  ${LOCATION}
     Input Text  id:website  www.google.be
     Input Text  id:companyDescription  Wij testen jouw software!
     Execute Javascript    window.scrollTo(0, window.scrollY+100)
-    sleep  1s
+    Sleep  1s
     Click Button  id:nextBtn
-    Input Text  id:email  test@test.com
-    Input Text  id:firstname  Test
-    Input Text  id:lastname  Test
-    Input Password  id:password  1234Passwoord$
-    Input Password  id:matchingPassword  1234Passwoord$
-    sleep  1s
+    Input Text  id:email  test@test.fr
+    Input Text  id:firstname  Jan
+    Input Text  id:lastname  De Tester
+    Input Password  id:password  ${PASSWORD}
+    Input Password  id:matchingPassword  ${PASSWORD}
+    Sleep  1s
     Click Button  id:nextBtn
+    Select Checkbox  class:form-check-input
+    Input Text  id:internshipDescription  Een leuke stage!
+    Execute Javascript    window.scrollTo(0, window.scrollY+200)
+    Sleep  1s
+    Click Button  id:registerBtn
+    Login To Website  test@test.com  ${PASSWORD}
+    Element Should Be Visible  css:.user.mx-2

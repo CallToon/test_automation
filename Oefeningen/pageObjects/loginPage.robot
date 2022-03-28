@@ -10,7 +10,8 @@ Open My Website
     Open Browser  ${url}  ${browser}
 
 Login To Website
+     [Arguments]  ${email}  ${password}
      Wait Until Element Is Visible  id:email
-     Input Text  id:email  student@thomasmore.be
-     Input Password  id:password  student
+     Input Text  id:email  ${email}
+     Input Password  id:password  ${password}
      Click Element  css:input[value='Login']
